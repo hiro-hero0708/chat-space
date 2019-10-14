@@ -30,7 +30,7 @@ groups table
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|add_member|string||
+|member|string||
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
