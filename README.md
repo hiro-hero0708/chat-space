@@ -1,39 +1,41 @@
-    usersテーブル
+DB design
+
+users table
 
 |Column|Type|Options|
 |------|----|-------|
+|name|string|null: false|
 |email|string|null: false|
 |password|string|null: false|
-|user_name|string|null:false |
 
 ### Association
-- has_many :messages
-- has_many :groups_user
+- has_many: :messages
+- has_many: groups, through: :groups_users
 
-messagesテーブル
+messages table
 
 |Column|Type|Options|
 |------|----|-------|
 |body|text|null: false|
 |image|string||
-|group_id|integer|null: false ,foreign_key: true |
-|user_id|integer|null: false,foreign_key: ture|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :user
 - belongs_to :group
+- belongs_to :user
 
-groupsテーブル
+groups table
 
 |Column|Type|Options|
 |------|----|-------|
-|group_name|string|null: false|
-|member|string||
+|name|string|null: false|
+|add_member|string||
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :groups_user
 - has_many :messages
+- has_many :users, through: :groups_users
 
 groups_usersテーブル
 
