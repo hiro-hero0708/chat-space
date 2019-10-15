@@ -22,7 +22,7 @@ messages table
 |group_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :group
+- has_many :groups through: :messages_groups
 - belongs_to :user
 
 groups table
@@ -32,12 +32,14 @@ groups table
 |name|string|null: false|
 |member|string||
 |user_id|integer|null: false, foreign_key: true|
+|message_id|integer|null: false, foreign_key: true|
+
 
 ### Association
-- has_many :messages
+- has_many :messages, through: :messages_groups
 - has_many :users, through: :groups_users
 
-groups_usersテーブル
+groups_users table
 
 |Column|Type|Options|
 |------|----|-------|
@@ -47,3 +49,14 @@ groups_usersテーブル
 ### Association
 - belongs_to :group
 - belongs_to :user
+
+messages_groups table
+
+|Column|Type|Options|
+|------|----|-------|
+|message_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :group
+- belongs_to :message
