@@ -50,7 +50,7 @@ groups_users table
 - belongs_to :group
 - belongs_to :user
 
-messages_groups table
+groups_messages table
 
 |Column|Type|Options|
 |------|----|-------|
