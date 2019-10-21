@@ -30,14 +30,27 @@ groups table
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|add_member|string||
-|user_id|integer|null: false, foreign_key: true|
+|member|string||
+|member_id|integer|null: false, foreign_key: true|
 
 ### Association
-- has_many :messages
+- has_many :members
 - has_many :users, through: :groups_users
 
-groups_usersテーブル
+members table
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|user_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to:user
+- belongs_to:group
+
+
+
+groups_users table
 
 |Column|Type|Options|
 |------|----|-------|
