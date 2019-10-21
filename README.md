@@ -16,7 +16,7 @@ messages table
 
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: false|
+|body|text||
 |image|string||
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
@@ -30,25 +30,13 @@ groups table
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|member|string||
-|member_id|integer|null: false, foreign_key: true|
+
 
 ### Association
+- has_many :messages
 - has_many :members
+- has_many :groups_users
 - has_many :users, through: :groups_users
-
-members table
-
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-|user_id|integer|null: false, foreign_key: true|
-
-### Association
-- belongs_to:user
-- belongs_to:group
-
-
 
 groups_users table
 
