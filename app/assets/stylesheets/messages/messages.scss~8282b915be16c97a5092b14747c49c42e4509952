@@ -1,8 +1,0 @@
-@mixin flexbox{
- display: flex;
-  }
-                  
-
-.wrapper {
-  @include flexbox;                   
-}
